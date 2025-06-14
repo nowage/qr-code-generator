@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR 코드 생성기</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>QR 코드 생성기</h1>
+    
+    <div class="form-container">
+      <form action="/generate" method="POST">
+        <div class="form-group">
+          <label for="data">URL 또는 텍스트 입력:</label>
+          <input type="text" id="data" name="data" value="<%= data || '' %>" placeholder="https://example.com" required>
+        </div>
+        <button type="submit" class="btn">QR 코드 생성</button>
+      </form>
+    </div>
+    
+    <% if (qrUrl) { %>
+    <div class="result-container">
+      <div class="qr-container">
+        <img src="<%= qrUrl %>" alt="QR Code" class="qr-image">
+      </div>
+      <div class="action-buttons">
+        <a href="<%= qrUrl %>" download class="btn">PNG 다운로드</a>
+        <button id="copyBtn" class="btn btn-secondary" data-text="<%= data %>">링크 복사</button>
+      </div>
+      <div class="data-info">
+        <p>인코딩된 데이터: <span id="encodedData"><%= data %></span></p>
+      </div>
+    </div>
+    <% } %>
+    
+    <div class="api-info">
+      <h2>API 사용법</h2>
+      <div class="code-block">
+        <pre>curl -X POST http://localhost:3000/api/generate \
+  -H "Content-Type: application/json" \
+  -d '{"data":"https://example.com", "format":"png"}' \
+  --output qrcode.png</pre>
+      </div>
+      <p>format 옵션: <code>png</code> 또는 <code>svg</code></p>
+    </div>
+  </div>
+  
+  <footer>
+    <p>© 2025 QR 코드 생성기 | <a href="https://github.com/nowage" target="_blank">GitHub</a></p>
+  </footer>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>
