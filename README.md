@@ -15,6 +15,7 @@ Node.js와 Express를 이용한 간단한 QR 코드 생성 웹 애플리케이�
 * **단축키 (`Cmd+Shift+K`)**로 빠른 실행
 * 클립보드 내용을 자동으로 QR 코드로 변환
 * 생성 기록(History) 관리 및 공유 기능
+* **[다운로드 (Mac App v1.0.0)](https://github.com/nowage/qr-code-generator/releases/download/v1.0.0/nowQRGen-mac.zip)**
 
 
 ## 설치 방법
